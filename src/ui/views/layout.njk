@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Your-Memories">
+    <meta name="author" content="Nicolas Inden">
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/css/app.css" />
+    <script defer src="/js/app.js"></script>
+    {% block extrajs %}{% endblock %}
+</head>
+<body>
+
+    <header>
+      <div class="navbar navbar-light bg-light shadow-sm">
+        <div class="container d-flex justify-content-between">
+          {% if title is defined %}
+          <a href="{{ title.href }}" class="navbar-brand d-flex align-items-center">
+            <img class="logo" src="/img/noun-parrot-2430918.svg" alt="PollyPi Logo"/>
+            <strong>{{ title.name }}</strong>
+          {% else %}
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <img class="logo" src="/img/noun-parrot-2430918.svg" alt="PollyPi Logo"/>
+            <strong class="ms-2">PollyPi</strong>
+          {% endif %}
+          </a>
+          <div class="lead">
+          {% if poll is defined %}
+          Umfragecode: <b>{{ poll.code }}</b>
+          {% endif %}
+          </div>
+          <div class="small">
+          {% if user is defined %}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.name }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/my">Meine Umfragen</a></li>
+            </ul>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main role="main" class="container pt-3">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="container text-muted">
+      <div class="row">
+        <p class="col">Your-Memories &copy; 2022 Nicolas Inden</p>
+        <p class="col"><a class="float-end" href="https://github.com/smashnet/your-memories">Visit Your-Memories on GitHub</a></p>
+      </div>
+    </footer>
+</body>
+</html>

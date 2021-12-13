@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <div class="card mx-auto mb-5">
+        <div class="card-body bg-light text-center">
+            <h5 class="card-title">Hallo {{ user.name }}! <br/><br/><i class="far fa-smile me-1"></i></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card mx-auto mb-2" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Umfrage erstellen</h5>
+                    <p class="card-text">Möchtest du eine neue Umfrage erstellen? Dann geht es hier für dich weiter:</p>
+                </div>
+                <div class="card-footer"><form action="/poll/create" method="POST"><button type="submit" class="btn btn-primary float-end">Umfrage erstellen</button></form></div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mx-auto mb-2" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Teilnehmen</h5>
+                    <p class="card-text">Möchtest du an einer Umfrage teilnehmen? Dann gib hier den Umfragecode ein:</p>
+                </div>
+                <div class="card-footer">
+                    <form class="row g-3" action="/poll/participate">
+                        <div class="col">
+                            <input class="form-control form-control-sm" name="code" type="text" placeholder="AaBbCc123" required="required"/>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary float-end">Teilnehmen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

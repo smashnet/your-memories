@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3'
+services:
+  database:
+    image: "postgres" # use latest official postgres version
+    container_name: yourmemories-db
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: postgres
+    ports:
+      - "5432:5432" 
+    volumes:
+      - yourmemories-db:/var/lib/postgresql/data/ # persist data even if container shuts down
+
+volumes:
+  yourmemories-db: # named volumes can be managed easier using docker-compose
+
